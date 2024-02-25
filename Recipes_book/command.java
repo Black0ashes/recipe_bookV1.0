@@ -16,6 +16,13 @@ public class command{
 
     }
 
+    public void start_program() {
+        command c1 = new command();
+        System.out.println(c1.view_command() + "\n" );
+
+        
+    }
+
     
 
 
