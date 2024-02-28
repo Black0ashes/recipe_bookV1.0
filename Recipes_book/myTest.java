@@ -9,7 +9,7 @@ public class myTest {
         // Var field
         command c1 = new command();
         
-        ArrayList<Object> list = new ArrayList<Object>();
+        ArrayList<category> list = new ArrayList<category>(); // use to store category object
         Scanner input = new Scanner(System.in); 
         
         String temp;
@@ -51,14 +51,26 @@ public class myTest {
 
 
     // use for match command
-    public static void match_command(String a, String b, String c,ArrayList<Object> list) {
+    public static void match_command(String a, String b, String c,ArrayList<category> list) {
         command c1 = new command();
         category c2 = new category("null");
+        recipe r1 = new recipe("null","null");
 
         if ((!a.equals(null)) && (!b.equals("null")) && (!c.equals("null"))) {
             if (a.equals("add")) {
                 if (b.equals("category")) {
                     c2.add_category(c, list);
+                }
+                if (b.equals("recipe")) {
+                    r1.add_recipe(c,  list);
+                }
+            }
+            else if (a.equals("remove")) {
+                if (b.equals("category")) {
+                    c2.remove_category(c, list);
+                }
+                if (b.equals("recipe")) {
+                    r1.remove_recipe(c, list);
                 }
             }
         }
