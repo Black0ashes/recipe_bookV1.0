@@ -187,17 +187,61 @@ public class recipe {
                     if (file2.exists()) {
                     file2.delete();
                     }
-
                 }
             }
-        }
-            
+        }   
     }
+
     public void edit_recipe() {
         
     }
-    public void view_recipe() {
-        
+    public void view_recipe(String recipe, ArrayList<category> list) {
+
+        for (int i = 0 ; i < list.size() ; i++) {
+            for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
+                if (recipe.equals(list.get(i).recipes_list.get(j).recipe_name)) {
+                    System.out.println("\n\tRecipe name : " + list.get(i).recipes_list.get(j).recipe_name);
+                    System.out.println("\tCategory : " + list.get(i).category_name);
+
+                
+                ArrayList<String> temp_list = new ArrayList<String>();
+                String csvFile = "Recipes_book\\data\\" + list.get(i).category_name + "_" + list.get(i).recipes_list.get(j).recipe_name + "_ingredients.csv";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        temp_list.add(line);                 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("\tIngredients :");
+                for (int k = 0 ; k < temp_list.size() ; k++) {
+                    System.out.println("\t" + temp_list.get(k));
+                }
+
+                ArrayList<String> temp_list2 = new ArrayList<String>();
+                csvFile = "Recipes_book\\data\\" + list.get(i).category_name + "_" + list.get(i).recipes_list.get(j).recipe_name + "_instructions.csv";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        temp_list2.add(line);                 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.print("\n");
+                System.out.println("\tInstructions :");
+                for (int k = 0 ; k < temp_list2.size() ; k++) {
+                    System.out.println("\t" + temp_list2.get(k));
+                }
+                }
+                System.out.print("\n");
+        }
+    }
     }
 
     public String getname() {

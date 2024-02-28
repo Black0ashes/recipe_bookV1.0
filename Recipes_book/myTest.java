@@ -73,6 +73,22 @@ public class myTest {
                     r1.remove_recipe(c, list);
                 }
             }
+            else if (a.equals("view")) {
+                if (b.equals("recipe")) {
+                    r1.view_recipe(c, list);
+                }
+                if (b.equals("category")) {
+                    c2.view_by_category(c, list);
+                }
+            }
+            else if (a.equals("search")) {
+                if (b.equals("name")) {
+                    c1.search_by_name(c, list);
+                }
+                if (b.equals("ingredient")) {
+                    c1.search_by_ingredient(c, list);
+                }
+            }
         }
         else if((!a.equals(null)) && (!b.equals("null"))) {
             if (a.equals("view")) {
