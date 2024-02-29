@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,13 +10,12 @@ public class category {
     String category_name;
     public ArrayList<recipe> recipes_list = new ArrayList<recipe>();
 
-    public category(String category_name) {
-        this.category_name = category_name;
-        
-    }
-
     public category() {
     
+    }
+
+    public category(String category_name) {
+        this.category_name = category_name;
     }
 
     public void add_category(String category_name, ArrayList<category> list) {
@@ -54,9 +52,9 @@ public class category {
     
 
     public void remove_category(String category_name, ArrayList<category> list) {
-        for (Object c : list) {
-            if (this.category_name.equals(category_name)) {
-                list.remove(c);
+        for (int i = 0 ; i < list.size() ; i++) {
+            if (list.get(i).category_name.equals(category_name)) {
+                list.remove(i);
             }
         }
 
@@ -74,7 +72,6 @@ public class category {
                     temp_list.remove(i);
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +80,6 @@ public class category {
             for (String i : temp_list) {
                 bw.write(i + "\n");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,33 +93,32 @@ public class category {
                     temp_list.add(line);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+            e.printStackTrace();
             }
 
             for (int i = 0 ; i < temp_list.size() ; i++) {
-            csvFile2 = "Recipes_book\\data\\" + category_name + "_" + temp_list.get(i) + "_ingredients.csv";
-            File file = new File(csvFile2);
-            if (file.exists()) {
-            file.delete();
-            }
+                csvFile2 = "Recipes_book\\data\\" + category_name + "_" + temp_list.get(i) + "_ingredients.csv";
+                File file = new File(csvFile2);
+                    if (file.exists()) {
+                    file.delete();
+                    }
 
-            csvFile2 = "Recipes_book\\data\\" + category_name + "_" + temp_list.get(i) + "_instructions.csv";
-            File file2 = new File(csvFile2);
-            if (file2.exists()) {
-            file2.delete();
-            }
+                csvFile2 = "Recipes_book\\data\\" + category_name + "_" + temp_list.get(i) + "_instructions.csv";
+                File file2 = new File(csvFile2);
+                    if (file2.exists()) {
+                    file2.delete();
+                    }
             }
 
             csvFile2 = "Recipes_book\\data\\" + category_name + "_recipe_list.csv";
             File file2 = new File(csvFile2);
-            if (file2.exists()) {
-            file2.delete();
-            }
+                if (file2.exists()) {
+                file2.delete();
+                }
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-            
+        }       
     }
 
 
@@ -133,27 +128,25 @@ public class category {
             ArrayList<String> temp_list = new ArrayList<String>();
             String csvFile2 = "Recipes_book\\data\\" + list.get(i).category_name + "_recipe_list.csv";
 
-        try {
-            try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    temp_list.add(line);
-                }
+                try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        temp_list.add(line);
+                    }
 
-                System.out.println("\n  List of recipe in category[" + list.get(i).category_name + "] :");
-                for (int j = 0 ; j < temp_list.size() ; j++) {
-                    System.out.println("\t\t" + temp_list.get(j));
+                    System.out.println("\n  List of recipe in category[" + list.get(i).category_name + "] :");
+                    for (int j = 0 ; j < temp_list.size() ; j++) {
+                        System.out.println("\t\t" + temp_list.get(j));
+                    }
+                    System.out.print("\n");
                 }
-                
-                System.out.print("\n");
-            }
-            } catch (IOException e) {
-                e.printStackTrace();
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        }
+
     }
-
 
     public String get_category_name() {
         return category_name;
@@ -169,8 +162,7 @@ public class category {
 
     public void remove_recipe_list(int i) {
                 recipes_list.remove(i);
-        }
-
+    }
 
 }
 

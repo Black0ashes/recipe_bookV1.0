@@ -1,5 +1,3 @@
-import java.util.Vector;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -8,16 +6,15 @@ public class myTest {
     public static void main(String[] args) {
         // Var field
         command c1 = new command();
-        
-        ArrayList<category> list = new ArrayList<category>(); // use to store category object
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in); 
         
-        String temp;
-        
+        ArrayList<category> list = new ArrayList<category>(); // use to store category object
+        String temp;        
         StringTokenizer token;
         
         // start
-        c1.start_program();
+        c1.start_program(list);
 
         // program input command loop
         while(true) {
@@ -43,12 +40,9 @@ public class myTest {
             else {
                 match_command(a,b,c,list);
             }
-        
-           
         }
 
     }
-
 
 
     // use for match command
