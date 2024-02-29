@@ -13,9 +13,7 @@ public class myTest {
         Scanner input = new Scanner(System.in); 
         
         String temp;
-        String a = "null";
-        String b = "null";
-        String c = "null";
+        
         StringTokenizer token;
         
         // start
@@ -24,6 +22,9 @@ public class myTest {
         // program input command loop
         while(true) {
             System.out.print("C:\\User\\Recipe_book\\NyX88> ");
+            String a = "";
+            String b = "";
+            String c = "";
             temp = input.nextLine();
             token = new StringTokenizer(temp);
             a = token.nextToken();
@@ -55,14 +56,18 @@ public class myTest {
         command c1 = new command();
         category c2 = new category("null");
         recipe r1 = new recipe("null","null");
+        bookmark b1 = new bookmark();
 
-        if ((!a.equals(null)) && (!b.equals("null")) && (!c.equals("null"))) {
+        if ((!a.equals("")) && (!b.equals("")) && (!c.equals(""))) {
             if (a.equals("add")) {
                 if (b.equals("category")) {
                     c2.add_category(c, list);
                 }
                 if (b.equals("recipe")) {
                     r1.add_recipe(c,  list);
+                }
+                if (b.equals("bookmark")) {
+                    b1.add_bookmark(c, list);
                 }
             }
             else if (a.equals("remove")) {
@@ -71,6 +76,9 @@ public class myTest {
                 }
                 if (b.equals("recipe")) {
                     r1.remove_recipe(c, list);
+                }
+                if (b.equals("bookmark")) {
+                    b1.remove_bookmark(c, list);
                 }
             }
             else if (a.equals("view")) {
@@ -89,14 +97,19 @@ public class myTest {
                     c1.search_by_ingredient(c, list);
                 }
             }
+            else if (a.equals("edit")) {
+                if (b.equals("recipe")) {
+                    r1.edit_recipe(c, list);
+                }
+            }
         }
-        else if((!a.equals(null)) && (!b.equals("null"))) {
+        else if((!a.equals("")) && (!b.equals("")) && (c.equals(""))) {
             if (a.equals("view")) {
                 if (b.equals("command")) {
                     System.out.println(c1.view_command() + "\n" );
                 }
-                else {
-                    System.out.println("wrong value");
+                if (b.equals("bookmark")) {
+                    b1.view_bookmark();
                 }
             }
             else {

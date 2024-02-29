@@ -13,6 +13,7 @@ public class category {
 
     public category(String category_name) {
         this.category_name = category_name;
+        
     }
 
     public category() {
@@ -143,7 +144,7 @@ public class category {
                 for (int j = 0 ; j < temp_list.size() ; j++) {
                     System.out.println("\t\t" + temp_list.get(j));
                 }
-
+                
                 System.out.print("\n");
             }
             } catch (IOException e) {
@@ -156,6 +157,10 @@ public class category {
 
     public String get_category_name() {
         return category_name;
+    }
+
+    public void setCategoryName(String category_name) {
+        this.category_name = category_name;
     }
 
     public void add_recipe_list(String recipe, String category) {
