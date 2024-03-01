@@ -77,10 +77,22 @@ public class myTest {
             }
             else if (a.equals("view")) {
                 if (b.equals("recipe")) {
-                    r1.view_recipe(c, list);
+                    if (c.equals("list")) {
+                        r1.view_recipe_list(list);
+                    }
+                    else {
+                        r1.view_recipe(c, list);
+                    }
+
                 }
                 if (b.equals("category")) {
-                    c2.view_by_category(c, list);
+                    if (c.equals("list")) {
+                        c2.view_category();
+                    }
+                    else {
+                        c2.view_by_category(c, list);
+                    }
+                    
                 }
             }
             else if (a.equals("search")) {
@@ -104,9 +116,6 @@ public class myTest {
                 }
                 if (b.equals("bookmark")) {
                     b1.view_bookmark();
-                }
-                if (b.equals("category")) {
-                    c2.view_category();
                 }
             }
             else {

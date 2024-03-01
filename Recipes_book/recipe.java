@@ -23,6 +23,7 @@ public class recipe {
     public void add_recipe(String recipe_name, ArrayList<category> list) {
         @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
+        
         System.out.println("C:\\User\\Recipe_book\\NyX88> Enter category of this recipe ");
         System.out.print("C:\\User\\Recipe_book\\NyX88> ");
         String tempC = input.next();
@@ -216,6 +217,9 @@ public class recipe {
                     }
 
                 }
+                else {
+                    System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
+                }
             }
         }   
     }
@@ -399,7 +403,14 @@ public class recipe {
                         else if (key.equals("x") || key.equals("X")) {
                             check = false;
                         }
+                        else {
+                            System.out.println("C:\\User\\Recipe_book\\NyX88> wrong value");
+                            
+                        }
                     }
+                }
+                else {
+                    System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
                 }
             }   
         }
@@ -454,6 +465,42 @@ public class recipe {
                 System.out.print("\n");
             }
         }
+    }
+
+    public void view_recipe_list(ArrayList<category> list) {
+        ArrayList<String> temp_list = new ArrayList<String>();
+        ArrayList<String> temp_list2 = new ArrayList<String>();
+
+        String csvFile = "Recipes_book\\data\\category_list.csv";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        temp_list.add(line);                 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+        for (int i = 0 ; i < temp_list.size() ; i++) {
+            String csvFile2 = "Recipes_book\\data\\" + temp_list.get(i) + "_recipe_list.csv";
+
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    temp_list2.add(line);                 
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("\n\n  list of recipe in [" + temp_list.get(i) + "] :");
+            for (int j = 0 ; j < temp_list2.size() ; j++) {
+                System.out.println("\t" + temp_list2.get(j));
+            }
+            temp_list2.clear();
+        }
+        System.out.print("\n");
     }
 
     public String getname() {
