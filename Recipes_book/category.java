@@ -148,6 +148,29 @@ public class category {
 
     }
 
+    public void view_category() {
+        ArrayList<String> temp_list = new ArrayList<String>();
+        String csvFile2 = "Recipes_book\\data\\category_list.csv";
+
+        try {
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    temp_list.add(line);
+                }
+
+                System.out.println("\n  List of recipe in bookmark :");
+                for (int j = 0 ; j < temp_list.size() ; j++) {
+                    System.out.println("\t\t" + temp_list.get(j));
+                }
+                
+                System.out.print("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String get_category_name() {
         return category_name;
     }

@@ -114,6 +114,7 @@ public class recipe {
         while(check) {
             if (tempit.equals("x") || tempit.equals("X")) {
                 check = false;
+                System.out.println("C:\\User\\Recipe_book\\NyX88> add recipe successfully");
             }
             else { 
                 String csvFile = "Recipes_book\\data\\" + getCategory + "_" + recipe_name + "_instructions.csv";

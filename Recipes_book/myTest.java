@@ -105,6 +105,9 @@ public class myTest {
                 if (b.equals("bookmark")) {
                     b1.view_bookmark();
                 }
+                if (b.equals("category")) {
+                    c2.view_category();
+                }
             }
             else {
                 System.out.println("wrong value");
