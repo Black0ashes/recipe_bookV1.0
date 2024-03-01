@@ -146,6 +146,7 @@ public class recipe {
     }
 
     public void remove_recipe(String recipe, ArrayList<category> list) {
+        int check = 0;
         for (int i = 0 ; i < list.size() ; i++) {
             for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
                 if (recipe.equals(list.get(i).recipes_list.get(j).recipe_name)) {
@@ -216,17 +217,23 @@ public class recipe {
                         e.printStackTrace();
                     }
 
+                    check++;
+
                 }
-                else {
-                    System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
-                }
+
+                
             }
-        }   
+        }
+        if (check == 0) {
+            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
+        }
     }
+
 
     public void edit_recipe(String recipe, ArrayList<category> list) {
         @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
+        int checklist = 0;
         String tempt = "";
         boolean check = true;
         for (int i = 0 ; i < list.size() ; i++) {
@@ -409,10 +416,12 @@ public class recipe {
                         }
                     }
                 }
-                else {
-                    System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
-                }
+
             }   
+        }
+
+        if (checklist == 0) {
+            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
         }
         
     }
