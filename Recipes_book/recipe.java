@@ -187,6 +187,33 @@ public class recipe {
                     if (file2.exists()) {
                         file2.delete();
                     }
+
+                    String csvFile3 = "Recipes_book\\data\\bookmark_list.csv";
+
+                    try (BufferedReader br = new BufferedReader(new FileReader(csvFile3))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            temp_list.add(line);                 
+                        }
+
+                        for (int l = 0 ; l < temp_list.size() ; l++) {
+                            if (temp_list.get(l).equals(recipe)) {
+                                temp_list.remove(l);
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+    
+                    try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile3))) {
+                        for (String k : temp_list) {
+                            bw.write(k + "\n");
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         }   

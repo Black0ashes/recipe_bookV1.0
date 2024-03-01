@@ -10,7 +10,7 @@ public class bookmark {
     public void add_bookmark(String recipe, ArrayList<category> list) {
         for (int i = 0 ; i < list.size() ; i++) {
             for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
-                if (recipe.equals(list.get(i).recipes_list.get(j).recipe_name)) { // use for find recipe in list
+                if (!recipe.equals(list.get(i).recipes_list.get(j).recipe_name)) { // use for find recipe in list
                     ArrayList<String> temp_list = new ArrayList<String>();
                     String csvFile = "Recipes_book\\data\\bookmark_list.csv";
 
