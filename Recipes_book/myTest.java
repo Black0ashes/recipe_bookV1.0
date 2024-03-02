@@ -117,6 +117,13 @@ public class myTest {
                 if (b.equals("bookmark")) {
                     b1.view_bookmark();
                 }
+                if (b.equals("recipe")) {
+                    System.out.println(" wrong value");
+                }
+                if (b.equals("category")) {
+                    System.out.println(" wrong value");
+                }
+
             }
             else {
                 System.out.println("wrong value");
