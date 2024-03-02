@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class bookmark {
     
     public void add_bookmark(String recipe, ArrayList<category> list) {
+        int check = 0;
         for (int i = 0 ; i < list.size() ; i++) {
             for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
                 if (recipe.equals(list.get(i).recipes_list.get(j).recipe_name)) { // use for find recipe in list
+                    check++;
                     ArrayList<String> temp_list = new ArrayList<String>();
                     String csvFile = "Recipes_book\\data\\bookmark_list.csv";
 
@@ -34,6 +36,9 @@ public class bookmark {
                     }
                 }
             }
+        }
+        if (check == 0) {
+            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this category in list");
         }
     }
 
