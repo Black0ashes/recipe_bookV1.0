@@ -415,7 +415,9 @@ public class recipe {
                                     }
                         }
                         else if (key.equals("x") || key.equals("X")) {
+                            System.out.println("C:\\User\\Recipe_book\\NyX88> edit recipe is succesfully");
                             check = false;
+                            checklist++;
                         }
                         else {
                             System.out.println("C:\\User\\Recipe_book\\NyX88> wrong value");
@@ -426,7 +428,6 @@ public class recipe {
 
             }   
         }
-
         if (checklist == 0) {
             System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list");
         }

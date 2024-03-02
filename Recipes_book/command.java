@@ -8,7 +8,7 @@ public class command{
     public String view_command() {
         return "Command List :\n\tadd recipe [recipe_name]\n\tremove recipe [recipe_name]\n\tview recipe [recipe_name]\n\tview recipe list" +
             "\n\tedit recipe [recipe_name]\n\tview command\n\tadd category [category_name]\n\tremove category [category_name]" +
-            "\n\tadd bookmark [recipe_name]\n\tremove bookmark\n\tview bookmark\n\tview category [category_name]\n\tview category list\n\tsearch name [recipe_name]\n\tsearch ingerdient [ingredient_name]";
+            "\n\tadd bookmark [recipe_name]\n\tremove bookmark\n\tview bookmark\n\tview category [category_name]\n\tview category list\n\tsearch name [recipe_name]\n\tsearch ingredient [ingredient_name]";
     }
 
     // Search command

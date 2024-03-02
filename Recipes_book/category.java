@@ -171,10 +171,6 @@ public class category {
         }
     }
 
-    public String get_category_name() {
-        return category_name;
-    }
-
     public void setCategoryName(String category_name) {
         this.category_name = category_name;
     }
@@ -184,7 +180,7 @@ public class category {
     }
 
     public void remove_recipe_list(int i) {
-                recipes_list.remove(i);
+        recipes_list.remove(i);
     }
 
 }
