@@ -49,7 +49,6 @@ public class category {
         }
         
     }
-    
 
     public void remove_category(String category_name, ArrayList<category> list) {
         for (int i = 0 ; i < list.size() ; i++) {

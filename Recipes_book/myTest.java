@@ -124,7 +124,7 @@ public class myTest {
                     int s = 0;
                     for (int i = 0 ; i < list.size() ; i++) {
                         for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
-                            if (c.equals(list.get(i).category_name) && s == 0) {
+                            if (c.equals(list.get(i).recipes_list.get(j).recipe_name) && s == 0) {
                                 r1.remove_recipe(c, list);
                                 s++;
                             }
@@ -166,7 +166,18 @@ public class myTest {
                         r1.view_recipe_list(list);
                     }
                     else {
-                        r1.view_recipe(c, list);
+                        int s = 0;
+                        for (int i = 0 ; i < list.size() ; i++) {
+                            for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
+                                if (c.equals(list.get(i).recipes_list.get(j).recipe_name) && s == 0) {
+                                    r1.view_recipe(c, list);
+                                    s++;
+                                }
+                            }     
+                        }
+                        if (s == 0) {
+                            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list ");
+                        } 
                     }
 
                 }
@@ -175,7 +186,16 @@ public class myTest {
                         c2.view_category();
                     }
                     else {
-                        c2.view_by_category(c, list);
+                        int s = 0;
+                        for (int i = 0 ; i < list.size() ; i++) {
+                                if (c.equals(list.get(i).category_name) && s == 0) {
+                                    c2.view_by_category(c, list);
+                                    s++;
+                                }
+                        }
+                        if (s == 0) {
+                            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this category in list ");
+                        } 
                     }
                     
                 }
