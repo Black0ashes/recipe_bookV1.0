@@ -38,7 +38,7 @@ public class bookmark {
             }
         }
         if (check == 0) {
-            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this category in list");
+            System.out.println("C:\\User\\Recipe_book\\NyX88> not found this bookmark in list");
         }
     }
 

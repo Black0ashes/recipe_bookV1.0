@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -41,9 +44,7 @@ public class myTest {
                 match_command(a,b,c,list);
             }
         }
-
     }
-
 
     // use for match command
     public static void match_command(String a, String b, String c,ArrayList<category> list) {
@@ -55,24 +56,108 @@ public class myTest {
         if ((!a.equals("")) && (!b.equals("")) && (!c.equals(""))) {
             if (a.equals("add")) {
                 if (b.equals("category")) {
-                    c2.add_category(c, list);
+                    int s = 0;
+                    for (int i = 0 ; i < list.size() ; i++) {
+                            if (c.equals(list.get(i).category_name) && s == 0) {
+                                System.out.println("C:\\User\\Recipe_book\\NyX88> already have this category in list ");
+                                s++;
+                            }
+                
+                    }
+                    if (s == 0) {
+                        c2.add_category(c, list);
+                    } 
                 }
                 if (b.equals("recipe")) {
-                    r1.add_recipe(c,  list);
+                    int s = 0;
+                    for (int i = 0 ; i < list.size() ; i++) {
+                        for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
+                            if (c.equals(list.get(i).recipes_list.get(j).recipe_name) && s == 0) {
+                                System.out.println("C:\\User\\Recipe_book\\NyX88> already have this recipe in list ");
+                                s++;
+                            }
+                        }
+                    }
+                    if (s == 0) {
+                        r1.add_recipe(c,  list);
+                    } 
                 }
                 if (b.equals("bookmark")) {
-                    b1.add_bookmark(c, list);
+                    int s = 0;
+                    ArrayList<String> temp_list = new ArrayList<String>();
+                    String csvFile2 = "Recipes_book\\data\\bookmark_list.csv";
+
+                    try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            temp_list.add(line);
+                        }
+                    }catch (IOException e) {
+                    e.printStackTrace();
+                    }
+                    
+                    for (int i = 0 ; i < temp_list.size() ; i++) {
+                        if (c.equals(temp_list.get(i)) && s == 0) {
+                            System.out.println("C:\\User\\Recipe_book\\NyX88> already have this bookmark in list ");
+                            s++;
+                        }
+                    }
+                    if (s == 0) {
+                        b1.add_bookmark(c, list);
+                    } 
                 }
             }
             else if (a.equals("remove")) {
                 if (b.equals("category")) {
-                    c2.remove_category(c, list);
+                    int s = 0;
+                    for (int i = 0 ; i < list.size() ; i++) {
+                            if (c.equals(list.get(i).category_name) && s == 0) {
+                                c2.remove_category(c, list);
+                                s++;
+                            }
+                    }
+                    if (s == 0) {
+                        System.out.println("C:\\User\\Recipe_book\\NyX88> not found this category in list ");
+                    } 
                 }
                 if (b.equals("recipe")) {
-                    r1.remove_recipe(c, list);
+                    int s = 0;
+                    for (int i = 0 ; i < list.size() ; i++) {
+                        for (int j = 0 ; j < list.get(i).recipes_list.size() ; j++) {
+                            if (c.equals(list.get(i).category_name) && s == 0) {
+                                r1.remove_recipe(c, list);
+                                s++;
+                            }
+                        }     
+                    }
+                    if (s == 0) {
+                        System.out.println("C:\\User\\Recipe_book\\NyX88> not found this recipe in list ");
+                    } 
+
                 }
                 if (b.equals("bookmark")) {
-                    b1.remove_bookmark(c, list);
+                    int s = 0;
+                    ArrayList<String> temp_list = new ArrayList<String>();
+                    String csvFile2 = "Recipes_book\\data\\bookmark_list.csv";
+
+                    try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            temp_list.add(line);
+                        }
+                    }catch (IOException e) {
+                    e.printStackTrace();
+                    }
+
+                    for (int i = 0 ; i < temp_list.size() ; i++) {
+                        if (c.equals(temp_list.get(i)) && s == 0) {
+                            b1.remove_bookmark(c, list);
+                            s++;
+                        }
+                    }
+                    if (s == 0) {
+                        System.out.println("C:\\User\\Recipe_book\\NyX88> not found this bookmark in list ");
+                    } 
                 }
             }
             else if (a.equals("view")) {
